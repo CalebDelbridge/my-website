@@ -1,0 +1,10 @@
+[build]
+    command = "yarn build"
+[[plugins]]
+	package = "netlify-plugin-cache-nextjs"
+    	[plugins.inputs]
+    		custom_build_dir_name = "build"
+[[plugins]]
+    package = "@netlify/plugin-lighthouse"
+[[plugins]]
+    package = "@netlify/plugin-nextjs"
