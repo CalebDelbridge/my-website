@@ -3,6 +3,7 @@ const TerserPlugin = require("terser-webpack-plugin")
 
 module.exports = withPlugins([], {
   distDir: "build",
+  target: "serverless",
   webpack: (config) => {
     config.optimization.minimize = true
     config.optimization.minimizer = [
