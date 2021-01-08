@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://calebdelbridge.com/sitemap.xml
