@@ -11,7 +11,11 @@ module.exports = {
     extend: {
       colors: {
         slate: "#23272a",
+        "slate-light": "#31363b",
         "warning-yellow": "#ffc107",
+        red: {
+          550: "#FF0000",
+        },
       },
       fontFamily: {
         sans: ["Poppins", ...defaultTheme.fontFamily.sans],
@@ -19,5 +23,5 @@ module.exports = {
     },
   },
   variants: {},
-  plugins: [],
+  plugins: [require("tailwind-caret-color")()],
 }

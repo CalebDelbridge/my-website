@@ -1,5 +1,6 @@
 import { Document as PrismicDocument } from "prismic-javascript/types/documents"
 declare module "feather-icons"
+declare module "tailwind-caret-color"
 
 interface Document extends PrismicDocument {
   data: PrismicData

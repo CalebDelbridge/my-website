@@ -6,3 +6,4 @@
 **/**/web-build
 !.env.example
 **/.vscode
+**/yarn-error.log
