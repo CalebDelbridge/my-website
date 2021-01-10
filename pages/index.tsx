@@ -72,6 +72,16 @@ const Index = ({ projects }: { projects: Document[] }): ReactElement => {
   }
   return (
     <>
+      <form
+        data-netlify="true"
+        hidden={true}
+        name="Work With Me"
+        netlify-honeypot="bot-field">
+        <input type="email" name="emailAddress" />
+        <input type="text" name="messageSubject" />
+        <textarea rows={3} name="message" />
+        <input name="bot-field" type="hidden" />
+      </form>
       <Head
         title="Caleb Delbridge"
         description="Fullstack Developer & Student of Life"
@@ -153,6 +163,7 @@ const Index = ({ projects }: { projects: Document[] }): ReactElement => {
               emailAddress: "",
               messageSubject: "",
               message: "",
+              "bot-field": "",
             }}
             onSubmit={(
               values: FormValues,
@@ -163,7 +174,7 @@ const Index = ({ projects }: { projects: Document[] }): ReactElement => {
                 headers: {
                   "Content-Type": "application/x-www-form-urlencoded",
                 },
-                body: encode({ "form-name": "contact-form", ...values }),
+                body: encode({ "form-name": "Work With Me", ...values }),
               })
                 .then(() => {
                   setMessageToDisplay("Message has successfully been delivered")
@@ -238,7 +249,7 @@ const Index = ({ projects }: { projects: Document[] }): ReactElement => {
                     </span>
                   )}
                 </ErrorMessage>
-
+                <Field type="hidden" name="bot-field" />
                 <button
                   className={
                     "w-full bg-slate-light text-white p-2 mt-4 " +
