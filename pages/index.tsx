@@ -19,7 +19,9 @@ const Heading = ({
   return (
     <h3 className="text-slate dark:text-white px-6 pt-6 md:px-12 md:pt-12 pb-0 text-6xl lg:text-7xl uppercase">
       <span className="font-extralight">{textPrefix}</span>
-      <span className="font-bold block md:inline">{textSuffix}</span>
+      <span className="font-extrabold lg:font-bold block md:inline">
+        {textSuffix}
+      </span>
     </h3>
   )
 }
@@ -90,69 +92,63 @@ const Index = ({ projects }: { projects: Document[] }): ReactElement => {
       />
       <div className="h-auto bg-white dark:bg-slate">
         <div className="flex flex-col flex-wrap justify-center h-screen px-4">
-          <h1 className="text-slate dark:text-white px-6 md:px-12 text-6xl lg:text-7xl uppercase">
+          <h1 className="text-slate dark:text-white pl-2 md:pl-6 px-6 md:px-12 text-6xl lg:text-7xl uppercase">
             <span className="font-extralight">Caleb</span>
-            <span className="font-bold block md:inline">Delbridge</span>
+            <span className="font-extrabold lg:font-bold block md:inline">
+              Delbridge
+            </span>
           </h1>
-          <h2 className="text-slate dark:text-white font-extralight px-6 md:px-12 text-lg lg:text-xl ml-0 md:ml-2">
+          <h2 className="text-slate dark:text-white font-extralight pl-2 md:pl-6 px-6 md:px-12 text-lg lg:text-xl ml-0 md:ml-2">
             Fullstack Developer & Student of Life
           </h2>
         </div>
         <Heading textPrefix="My" textSuffix="Projects" />
         <div className="grid gap-0 grid-cols-1 lg:grid-cols-2 h-auto text-slate dark:text-white p-3 md:p-6">
-          {aboveTheFoldProjects.map((arrayOfProjects: Document[]) => {
+          {[...new Set(aboveTheFoldProjects.flat())].map(({ data }, index) => {
             return (
-              <>
-                {arrayOfProjects.map((singleProject, index) => {
-                  return (
-                    <div
-                      key={index}
-                      className="bg-transparent border p-4 w-auto m-3 md:m-6 border-slate dark:border-white">
-                      <h2 className="text-4xl">
-                        {singleProject.data.title[0].text}
-                      </h2>
-                      <div className="flex flex-nowrap mt-2">
-                        {singleProject.data.icons.map((icon, index) => {
-                          return (
-                            <a
-                              className="mr-1"
-                              key={index}
-                              href={icon.link.url}
-                              target="_blank"
-                              rel="noreferrer">
-                              <Icon iconType={icon.type} />
-                            </a>
-                          )
-                        })}
-                      </div>
-                      <p className="text-base mt-2 my-4">
-                        {singleProject.data.description[0].text}
-                      </p>
-                      <div className="mb-2">
-                        {singleProject.data.badges.map((badge, index) => {
-                          const classesToApply =
-                            "bg-warning-yellow p-2 py-1 text-slate font-bold text-xs mr-2 whitespace-nowrap leading-none inline-block"
-                          if (badge.link.url) {
-                            return (
-                              <a key={index} href={badge.link.url}>
-                                <span className={classesToApply}>
-                                  {badge.content[0].text}
-                                </span>
-                              </a>
-                            )
-                          } else {
-                            return (
-                              <span key={index} className={classesToApply}>
-                                {badge.content[0].text}
-                              </span>
-                            )
-                          }
-                        })}
-                      </div>
-                    </div>
-                  )
-                })}
-              </>
+              <div
+                key={index}
+                className="bg-transparent border p-4 w-auto m-3 md:m-6 border-slate dark:border-white">
+                <h2 className="text-4xl">{data.title[0].text}</h2>
+                <div className="flex flex-nowrap mt-2">
+                  {data.icons.map((icon, index) => {
+                    return (
+                      <a
+                        className="mr-1"
+                        key={index}
+                        href={icon.link.url}
+                        target="_blank"
+                        rel="noreferrer">
+                        <Icon iconType={icon.type} />
+                      </a>
+                    )
+                  })}
+                </div>
+                <p className="text-base mt-2 my-4">
+                  {data.description[0].text}
+                </p>
+                <div className="mb-2">
+                  {data.badges.map((badge, index) => {
+                    const classesToApply =
+                      "bg-warning-yellow p-2 py-1 text-slate font-bold text-xs mr-2 whitespace-nowrap leading-none inline-block"
+                    if (badge.link.url) {
+                      return (
+                        <a key={index} href={badge.link.url}>
+                          <span className={classesToApply}>
+                            {badge.content[0].text}
+                          </span>
+                        </a>
+                      )
+                    } else {
+                      return (
+                        <span key={index} className={classesToApply}>
+                          {badge.content[0].text}
+                        </span>
+                      )
+                    }
+                  })}
+                </div>
+              </div>
             )
           })}
         </div>
@@ -200,7 +196,7 @@ const Index = ({ projects }: { projects: Document[] }): ReactElement => {
                   name="emailAddress"
                   placeholder="Enter Email"
                   type="email"
-                  className="mt-2 p-2 w-full dark:bg-slate-light caret-white outline-none px-3 text-slate dark:text-white border border-slate dark:border-slate-light"
+                  className="mt-2 p-2 w-full dark:bg-slate-light caret-white outline-none px-3 text-slate dark:text-white dark:border-none border border-slate dark:border-slate-light rounded-none shadow-none"
                 />
                 <ErrorMessage name="emailAddress">
                   {(msg) => (
@@ -219,7 +215,7 @@ const Index = ({ projects }: { projects: Document[] }): ReactElement => {
                   id="messageSubject"
                   name="messageSubject"
                   placeholder="Enter Subject"
-                  className="mt-2 p-2 w-full dark:bg-slate-light caret-white outline-none px-3 text-slate dark:text-white border border-slate dark:border-slate-light"
+                  className="mt-2 p-2 w-full dark:bg-slate-light caret-white outline-none px-3 text-slate dark:text-white dark:border-none border border-slate dark:border-slate-light rounded-none shadow-none"
                 />
                 <ErrorMessage name="messageSubject">
                   {(msg) => (
@@ -239,7 +235,7 @@ const Index = ({ projects }: { projects: Document[] }): ReactElement => {
                   name="message"
                   placeholder="Enter your proposal, question, anything?"
                   as="textarea"
-                  className="mt-2 p-2 w-full dark:bg-slate-light caret-white outline-none px-3 text-slate dark:text-white border border-slate dark:border-slate-light"
+                  className="mt-2 p-2 w-full dark:bg-slate-light caret-white outline-none px-3 text-slate dark:text-white dark:border-none border border-slate dark:border-slate-light rounded-none shadow-none"
                   rows={3}
                 />
                 <ErrorMessage name="message">
@@ -252,7 +248,7 @@ const Index = ({ projects }: { projects: Document[] }): ReactElement => {
                 <Field type="hidden" name="bot-field" />
                 <button
                   className={
-                    "w-full bg-slate-light text-white p-2 mt-4 " +
+                    "w-full bg-slate-light text-white p-2 mt-4 rounded-none " +
                     (isSubmitting && "cursor-not-allowed opacity-50")
                   }
                   type="submit">
