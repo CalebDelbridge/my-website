@@ -7,3 +7,4 @@
 !.env.example
 **/.vscode
 **/yarn-error.log
+**/out

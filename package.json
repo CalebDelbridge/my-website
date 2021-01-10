@@ -5,9 +5,9 @@
   "scripts": {
     "dev": "next dev --hostname 0.0.0.0",
     "lint": "eslint ./ --ext [tsx,ts] --fix --color",
+    "format": "prettier --write --loglevel \"error\" \"**/*.{ts,json,graphql,d.ts}\"",
     "typecheck": "tsc --project tsconfig.json --pretty --noEmit",
-    "build": "next build",
-    "export": "next export"
+    "build": "next build && next export"
   },
   "dependencies": {
     "formik": "^2.2.6",
@@ -30,7 +30,6 @@
     "@types/node": "^12.12.21",
     "@types/react": "^16.9.16",
     "@types/react-dom": "^16.9.4",
-    "@types/recharts": "^1.8.16",
     "@types/yup": "^0.29.11",
     "@typescript-eslint/eslint-plugin": "^4.9.0",
     "@typescript-eslint/parser": "^4.9.0",

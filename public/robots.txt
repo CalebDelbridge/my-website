@@ -1,2 +1,3 @@
 User-agent: *
+Disallow: /terms
 Sitemap: https://calebdelbridge.com/sitemap.xml

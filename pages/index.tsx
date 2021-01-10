@@ -163,7 +163,7 @@ const Index = ({ projects }: { projects: Document[] }): ReactElement => {
                 headers: {
                   "Content-Type": "application/x-www-form-urlencoded",
                 },
-                body: encode({ "form-name": "contact-demo", ...values }),
+                body: encode({ "form-name": "contact-form", ...values }),
               })
                 .then(() => {
                   setMessageToDisplay("Message has successfully been delivered")
@@ -268,12 +268,10 @@ const Index = ({ projects }: { projects: Document[] }): ReactElement => {
 
 export const getStaticProps: GetStaticProps = async (): Promise<{
   props: { projects: Document[] }
-  revalidate: number
 }> => {
   const allProjects = await fetchAllProjects()
   return {
     props: { projects: allProjects },
-    revalidate: 1,
   }
 }
 
