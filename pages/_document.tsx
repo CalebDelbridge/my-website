@@ -6,11 +6,7 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <link
-            href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600;700&display=swap"
-            rel="preload"
-            as="font"
-          />
+          <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600;700&display=swap" />
           <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
         </Head>
         <body className="h-screen bg-white dark:bg-slate">
