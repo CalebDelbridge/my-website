@@ -119,7 +119,8 @@ const Index = ({ projects }: { projects: Document[] }): ReactElement => {
                               key={index}
                               href={icon.link.url}
                               target="_blank"
-                              rel="noreferrer">
+                              rel="noreferrer"
+                              aria-label={icon.type}>
                               <Icon iconType={icon.type} />
                             </a>
                           )
