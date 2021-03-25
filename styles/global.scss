@@ -5,3 +5,7 @@
 .loading-bar {
     @apply text-white dark:text-slate;
 }
+
+input, textarea {
+    @apply appearance-none
+}
