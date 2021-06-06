@@ -7,7 +7,7 @@
     "lint": "eslint ./ --ext [tsx,ts] --fix --color",
     "format": "prettier --write --loglevel \"error\" \"**/*.{ts,json,graphql,d.ts}\"",
     "typecheck": "tsc --project tsconfig.json --pretty --noEmit",
-    "build": "next build && next export"
+    "build": "next build"
   },
   "dependencies": {
     "formik": "^2.2.6",
